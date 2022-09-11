@@ -1,0 +1,53 @@
+﻿@model SampleMvcApp.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <h2 class="text-center">@ViewData["Title"]</h2>
+
+            <div class="col-md-12 w-100 text-center"
+            >
+                <img src="@Model.ProfileImage"
+                     alt="" class="img-fluid" style="height: 120px; width: 120px; border-radius: 50%;"/>
+            </div>
+
+            </div>
+            <div class="col-md-12 w-100 text-center">
+                <h3>@Model.Name</h3>
+                <p>
+                    <i class="glyphicon glyphicon-envelope"></i> @Model.EmailAddress
+                </p>
+                
+                <p>
+                    @Model.Nickname
+                </p>
+                
+                <p>
+                    @Model.Name
+                </p>
+
+                @if (Model.IsGoogle)
+                {
+                    <p>
+                        Logged in with <b>Google</b>
+                    </p>    
+                }
+                else {
+                    <p>
+                        Logged in with <b>Auth0</b>
+                    </p>
+                }
+
+                @* <button type="button" class="btn btn-dark">
+                    <a id="qsLogoutBtn" asp-controller="Account" asp-action="Logout">Logout</a>
+                </button> *@
+                <button id="qsLogoutBtn" class="btn btn-dark" onclick="location.href='@Url.Action("Logout", "Account")'">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
